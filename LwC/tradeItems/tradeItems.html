@@ -1,0 +1,44 @@
+<template>
+  <lightning-card title="Trade line items" icon-name="standard:account">
+    <div>
+      <lightning-datatable
+        key-field="id"
+        data={tradeItemData}
+        columns={columns}
+        onrowselection={getSelectedId}
+        onsave={handleSave}
+      >
+      </lightning-datatable>
+    </div>
+    <div class="btn-grp">
+      <lightning-button-group>
+        <lightning-button
+          label="Add Debt"
+          onclick={handleAdd}
+        ></lightning-button>
+        &nbsp;&nbsp;
+        <lightning-button
+          label="Remove Debt"
+          onclick={handleRemove}
+        ></lightning-button>
+      </lightning-button-group>
+    </div>
+    <br />
+    <div>
+      <div class="slds-float_right total-amount">
+        <span style="font-weight: bold">Total :</span>
+        <lightning-formatted-number
+          value={totalBalance}
+          format-style="currency"
+          currency-code="USD"
+        ></lightning-formatted-number>
+      </div>
+    </div>
+    <br />
+    <div class="count-agg">
+      <span style="font-weight: bold">Total Row Count:</span>{totalRowCount}
+      &nbsp;&nbsp;&nbsp;
+      <span style="font-weight: bold">Checked Row Count:</span>{totalCheckCount}
+    </div>
+  </lightning-card>
+</template>
